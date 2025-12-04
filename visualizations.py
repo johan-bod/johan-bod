@@ -33,22 +33,37 @@ color_map = create_color_map(brands)
 # 1. SANKEY DIAGRAM: Topic → Brand Flow (Interactions)
 # ============================================================================
 def create_sankey_diagram():
-    """Create Sankey diagram showing flow from topics to brands"""
+    """Create Sankey diagram showing flow from public to topics to brands"""
     print("Creating Sankey diagram...")
 
     # Filter out zero interactions
     df_sankey = df[df['Interactions'] > 0].copy()
 
-    # Create node lists
-    topics = df_sankey['Topic'].unique().tolist()
+    # Topic name mapping
+    topic_names = {
+        'Topic_1': 'Digital Printing Solutions',
+        'Topic_2': 'Document Solutions',
+        'Topic_3': 'Printing Experience Personalisation',
+        'Topic_4': 'Technologies and Workflow Optimisation',
+        'Topic_5': 'Employment'
+    }
+
+    # Create node lists with Public as the first node
+    public_node = ['General Public']
+    topics = sorted(df_sankey['Topic'].unique().tolist())
+    topic_labels = [topic_names.get(t, t) for t in topics]
     brands_list = df_sankey['Brand'].unique().tolist()
 
-    # Create node labels
-    node_labels = topics + brands_list
+    # Create node labels: Public + Topics + Brands
+    node_labels = public_node + topic_labels + brands_list
 
     # Create index mappings
-    topic_indices = {topic: i for i, topic in enumerate(topics)}
-    brand_indices = {brand: i + len(topics) for i, brand in enumerate(brands_list)}
+    public_index = 0
+    topic_indices = {topic: i + 1 for i, topic in enumerate(topics)}
+    brand_indices = {brand: i + 1 + len(topics) for i, brand in enumerate(brands_list)}
+
+    # Calculate total interactions per topic for Public → Topic flows
+    topic_totals = df_sankey.groupby('Topic')['Interactions'].sum().to_dict()
 
     # Create links
     sources = []
@@ -56,6 +71,14 @@ def create_sankey_diagram():
     values = []
     link_colors = []
 
+    # Add Public → Topic flows
+    for topic in topics:
+        sources.append(public_index)
+        targets.append(topic_indices[topic])
+        values.append(topic_totals[topic])
+        link_colors.append('rgba(100, 150, 250, 0.3)')  # Blue for public flows
+
+    # Add Topic → Brand flows
     for _, row in df_sankey.iterrows():
         sources.append(topic_indices[row['Topic']])
         targets.append(brand_indices[row['Brand']])
@@ -68,7 +91,8 @@ def create_sankey_diagram():
             link_colors.append('rgba(100, 100, 100, 0.2)')
 
     # Create node colors
-    node_colors = ['rgba(100, 150, 200, 0.8)'] * len(topics)  # Topics in blue
+    node_colors = ['rgba(100, 200, 255, 0.9)']  # Public in bright blue
+    node_colors += ['rgba(100, 150, 200, 0.8)'] * len(topics)  # Topics in blue
     for brand in brands_list:
         if brand == 'Kyocera':
             node_colors.append('rgba(255, 0, 0, 0.8)')  # Kyocera in red
@@ -93,13 +117,13 @@ def create_sankey_diagram():
 
     fig.update_layout(
         title={
-            'text': 'Brand Interaction Flow by Topic (EU Market)<br><sub>Focus on Kyocera (highlighted in red)</sub>',
+            'text': 'Public → Topic → Brand Interaction Flow (EU Market)<br><sub>General public drives topic conversations | Kyocera highlighted in red</sub>',
             'x': 0.5,
             'xanchor': 'center'
         },
         font=dict(size=12),
-        height=600,
-        width=1200
+        height=700,
+        width=1400
     )
 
     # Save outputs
