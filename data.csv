@@ -1,0 +1,61 @@
+Topic,Brand,Results,Interactions,Comments,Estimated_Reach
+Topic_1,Kyocera,27,112,3,4100
+Topic_1,Epson,23,12700,612,163600
+Topic_1,Ricoh,16,4,0,299
+Topic_1,Xerox,13,51,5,3700
+Topic_1,Konica Minolta,10,17,3,983
+Topic_1,Docuware,5,1,0,12
+Topic_1,Canon,3,0,0,155
+Topic_1,Lexmark,3,1,0,5
+Topic_1,Hyland,1,0,0,0
+Topic_1,Open Text,0,0,0,0
+Topic_1,Laserfiche,0,0,0,0
+Topic_1,KDA,0,0,0,0
+Topic_2,Epson,261,16500,1000,272500
+Topic_2,Xerox,117,5900,9,104600
+Topic_2,Canon,100,1000,0,14000
+Topic_2,Ricoh,96,411,70,8300
+Topic_2,Kyocera,77,186,3,4500
+Topic_2,Hyland,42,12,0,133
+Topic_2,Konica Minolta,34,35,3,2200
+Topic_2,Lexmark,16,7,0,91
+Topic_2,Docuware,6,1,0,12
+Topic_2,Open Text,3,1,0,0
+Topic_2,KDA,2,0,0,0
+Topic_2,Laserfiche,0,0,0,0
+Topic_3,Canon,480,4700,0,83000
+Topic_3,Hyland,110,3100,1,64900
+Topic_3,Kyocera,96,834,6,5700
+Topic_3,Xerox,58,5800,2,100000
+Topic_3,Ricoh,38,61,5,1300
+Topic_3,Epson,18,11,0,357
+Topic_3,Open Text,14,28,0,208
+Topic_3,Konica Minolta,2,0,0,0
+Topic_3,Docuware,2,1,0,26
+Topic_3,Lexmark,1,2,0,3
+Topic_3,KDA,0,1,0,0
+Topic_3,Laserfiche,0,0,0,0
+Topic_4,Epson,7,1,0,216
+Topic_4,Canon,4,0,0,0
+Topic_4,Xerox,1,0,0,0
+Topic_4,Ricoh,1,0,0,0
+Topic_4,Kyocera,1,0,0,0
+Topic_4,Hyland,1,0,0,0
+Topic_4,Open Text,1,0,0,0
+Topic_4,Konica Minolta,0,0,0,0
+Topic_4,Lexmark,0,0,0,0
+Topic_4,Docuware,0,0,0,0
+Topic_4,Laserfiche,0,0,0,0
+Topic_4,KDA,0,0,0,0
+Topic_5,Open Text,26,17,0,438
+Topic_5,Canon,13,21,0,361
+Topic_5,Konica Minolta,8,8,0,958
+Topic_5,Ricoh,7,4,0,19
+Topic_5,Xerox,7,0,0,0
+Topic_5,Hyland,5,1,0,42
+Topic_5,Epson,3,13,1,372
+Topic_5,Docuware,1,0,0,0
+Topic_5,Kyocera,1,0,0,0
+Topic_5,Lexmark,0,0,0,0
+Topic_5,Laserfiche,0,0,0,0
+Topic_5,KDA,0,0,0,0
